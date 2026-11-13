@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website educativo sobre a influência das redes sociais no desempenho escolar dos alunos.">
+  <meta name="theme-color" content="#123b72">
+  <title>Redes Sociais e Desempenho Escolar</title>
+  <style>
+    :root {
+      --navy: #123b72;
+      --blue: #1769aa;
+      --sky: #eaf4ff;
+      --ink: #1e293b;
+      --muted: #5b6778;
+      --paper: #ffffff;
+      --bg: #f4f7fb;
+      --gold: #f4b942;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(18, 59, 114, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(18, 59, 114, .97);
+      box-shadow: 0 3px 16px rgba(0,0,0,.12);
+    }
+    .nav-wrap {
+      max-width: 1120px; margin: auto; padding: 0 22px;
+      min-height: 68px; display: flex; align-items: center;
+      justify-content: space-between; gap: 18px;
+    }
+    .brand { color: white; font-weight: 800; letter-spacing: .2px; }
+    .menu { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+    .menu a {
+      color: white; text-decoration: none; font-size: .91rem;
+      padding: 9px 11px; border-radius: 9px; transition: .2s;
+    }
+    .menu a:hover, .menu a:focus { background: rgba(255,255,255,.16); }
+    .hero {
+      min-height: 470px; display: grid; place-items: center; text-align: center;
+      color: white; padding: 82px 22px;
+      background:
+        linear-gradient(115deg, rgba(9,35,72,.91), rgba(18,91,151,.72)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&auto=format&fit=crop") center/cover;
+      background:
+        linear-gradient(115deg, rgba(9,35,72,.92), rgba(18,91,151,.74)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&auto=format&fit=crop") center/cover;
+    }
+    .hero-inner { max-width: 850px; }
+    .eyebrow {
+      display: inline-block; padding: 6px 13px; border-radius: 30px;
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      font-size: .85rem; font-weight: 700; letter-spacing: .7px;
+    }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.65rem); line-height: 1.13; margin: 20px 0 15px; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.2rem); max-width: 700px; margin: 0 auto 25px; color: #edf6ff; }
+    .button {
+      display: inline-block; background: var(--gold); color: #17243a;
+      padding: 12px 21px; border-radius: 10px; font-weight: 800;
+      text-decoration: none; border: 0; cursor: pointer; transition: transform .2s, filter .2s;
+    }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.04); }
+    main { max-width: 1120px; margin: 34px auto 60px; padding: 0 22px; }
+    section {
+      background: var(--paper); padding: clamp(22px, 4vw, 38px);
+      border-radius: var(--radius); margin: 22px 0; box-shadow: var(--shadow);
+    }
+    .section-tag { color: var(--blue); font-weight: 800; font-size: .82rem; text-transform: uppercase; letter-spacing: 1px; }
+    h2 { color: var(--navy); font-size: clamp(1.55rem, 3vw, 2rem); line-height: 1.25; margin: 5px 0 18px; }
+    h3 { color: var(--navy); margin: 22px 0 8px; }
+    p { margin: 10px 0; }
+    .lead { font-size: 1.08rem; color: var(--muted); }
+    .feature-image {
+      display: block; width: 100%; max-height: 360px; object-fit: cover;
+      border-radius: 14px; margin: 18px 0 22px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .card {
+      background: var(--sky); border: 1px solid #d8e9fb;
+      padding: 20px; border-radius: 14px;
+    }
+    .card h3 { margin-top: 0; }
+    .card p:last-child { margin-bottom: 0; }
+    .list { padding-left: 22px; }
+    .list li { padding: 4px 0; }
+    .callout {
+      background: #fff7e5; border-left: 5px solid var(--gold);
+      padding: 17px 20px; border-radius: 10px; margin-top: 20px;
+    }
+    .pill {
+      display: inline-block; background: #eaf4ff; color: var(--navy);
+      padding: 5px 10px; border-radius: 30px; font-size: .84rem; font-weight: 700;
+      margin: 4px 4px 0 0;
+    }
+    footer { background: #102e55; color: #e8f2ff; text-align: center; padding: 28px 20px; }
+    footer p { margin: 4px 0; }
+    .back-top {
+      position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px;
+      display: grid; place-items: center; background: var(--blue); color: white;
+      border-radius: 50%; text-decoration: none; box-shadow: var(--shadow);
+    }
+    @media (max-width: 760px) {
+      .nav-wrap { align-items: flex-start; flex-direction: column; padding: 13px 18px; gap: 7px; }
+      .menu { justify-content: flex-start; width: 100%; }
+      .menu a { font-size: .86rem; padding: 7px 9px; }
+      .hero { min-height: 420px; }
+      .grid { grid-template-columns: 1fr; }
+      main { padding: 0 14px; margin-top: 18px; }
+      section { margin: 16px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body id="topo">
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">TEMA 15 · WEBSITE EDUCATIVO</span>
+      <h1>Influência das Redes Sociais no Desempenho Escolar</h1>
+      <p>As redes sociais ajudam a aprender ou podem prejudicar a concentração e os resultados escolares?</p>
+      <a class="button" href="#introducao">Explorar o tema</a>
+    </div>
+  </header>
+
+  <div class="topbar">
+    <div class="nav-wrap">
+      <div class="brand">Aprender com Equilíbrio</div>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#introducao">Introdução</a>
+        <a href="#objectivos">Objectivos</a>
+        <a href="#desenvolvimento">Desenvolvimento</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#recomendacoes">Recomendações</a>
+        <a href="#conclusao">Conclusão</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section id="inicio">
+      <span class="section-tag">Bem-vindo</span>
+      <h2>Conhecer para usar melhor</h2>
+      <img class="feature-image" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85" alt="Estudantes a utilizar tecnologia para aprender" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85'">
+      <p class="lead">Este website foi criado para sensibilizar a comunidade escolar sobre a influência do WhatsApp, TikTok, Instagram, Facebook e YouTube na concentração, nos hábitos de estudo e no desempenho dos alunos.</p>
+      <p>As redes sociais podem ser ferramentas úteis para aprender e comunicar. O mais importante é saber utilizá-las com responsabilidade e equilíbrio.</p>
+      <span class="pill">Educação</span><span class="pill">Tecnologia</span><span class="pill">Cidadania digital</span>
+    </section>
+
+    <section id="introducao">
+      <span class="section-tag">01 · Enquadramento</span>
+      <h2>Introdução</h2>
+      <p>As redes sociais fazem parte do dia a dia de muitos alunos em Moçambique. São utilizadas para comunicar, estudar, divertir e partilhar informações.</p>
+      <p>No entanto, o uso excessivo ou sem organização pode prejudicar a concentração, o descanso e o desempenho escolar. Alguns alunos passam tanto tempo online que acabam por reduzir o tempo dedicado aos estudos.</p>
+      <p>Por isso, é importante compreender as vantagens e os riscos das redes sociais e encontrar formas de as utilizar de maneira consciente.</p>
+    </section>
+
+    <section id="objectivos">
+      <span class="section-tag">02 · Finalidade do trabalho</span>
+      <h2>Objectivos</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Objectivo geral</h3>
+          <p>Analisar como as redes sociais influenciam o desempenho escolar dos alunos.</p>
+        </article>
+        <article class="card">
+          <h3>Objectivos específicos</h3>
+          <ul class="list">
+            <li>Identificar as vantagens e desvantagens das redes sociais;</li>
+            <li>Apresentar factores que podem contribuir para dificuldades no desempenho escolar;</li>
+            <li>Propor soluções práticas para alunos, professores e encarregados de educação.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="desenvolvimento">
+      <span class="section-tag">03 · Análise do tema</span>
+      <h2>Desenvolvimento</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Possíveis causas</h3>
+          <p>Uso excessivo do telemóvel, falta de horários, notificações constantes, dificuldade em controlar o tempo online e utilização das redes durante o período de estudo.</p>
+        </article>
+        <article class="card">
+          <h3>Possíveis consequências</h3>
+          <p>Distração nas aulas, tarefas escolares incompletas, redução do tempo de descanso, menor concentração e dificuldades em organizar os estudos.</p>
+        </article>
+        <article class="card">
+          <h3>Impacto na vida escolar</h3>
+          <p>O uso desorganizado pode deixar menos tempo para estudar, ler, participar nas aulas e dialogar com a família.</p>
+        </article>
+        <article class="card">
+          <h3>Vantagens</h3>
+          <p>Grupos de estudo, partilha de materiais, vídeos educativos, comunicação rápida e oportunidades de desenvolver a criatividade.</p>
+        </article>
+      </div>
+      <div class="callout"><strong>Também existem riscos:</strong> distração, perda de tempo, cyberbullying, comparação com outras pessoas e dificuldade em interromper o uso. Estes riscos podem ser reduzidos com orientação e hábitos digitais saudáveis.</div>
+    </section>
+
+    <section id="solucoes">
+      <span class="section-tag">04 · Prevenção</span>
+      <h2>Soluções e medidas de prevenção</h2>
+      <ul class="list">
+        <li>Estabelecer horários de estudo e fazer pausas planeadas;</li>
+        <li>Silenciar notificações durante as aulas e os trabalhos de casa;</li>
+        <li>Utilizar grupos de mensagens para partilhar conteúdos escolares;</li>
+        <li>Seleccionar vídeos e páginas com informação educativa e credível;</li>
+        <li>Promover palestras e debates sobre cidadania e segurança digital;</li>
+        <li>Criar cartazes de sensibilização na escola;</li>
+        <li>Conversar com um adulto de confiança quando surgir uma situação de assédio ou cyberbullying.</li>
+      </ul>
+    </section>
+
+    <section id="recomendacoes">
+      <span class="section-tag">05 · Orientações práticas</span>
+      <h2>Recomendações</h2>
+      <div class="grid">
+        <article class="card"><h3>Para os alunos</h3><p>Usar as redes também para aprender, organizar o tempo e evitar consultar o telemóvel constantemente durante o estudo.</p></article>
+        <article class="card"><h3>Para os professores</h3><p>Orientar os alunos na escolha de conteúdos educativos e integrar recursos digitais nas actividades de aprendizagem quando forem adequados.</p></article>
+        <article class="card"><h3>Para os encarregados</h3><p>Conversar com os jovens, estabelecer regras claras em conjunto e acompanhar os hábitos digitais com respeito.</p></article>
+        <article class="card"><h3>Para a escola</h3><p>Promover debates, actividades de literacia digital e campanhas sobre o uso responsável da Internet.</p></article>
+      </div>
+    </section>
+
+    <section id="conclusao">
+      <span class="section-tag">06 · Considerações finais</span>
+      <h2>Conclusão</h2>
+      <p>As redes sociais não são, por si só, boas ou más. A sua influência depende da forma, do tempo e dos objectivos com que são utilizadas.</p>
+      <p>Quando usadas com equilíbrio, podem apoiar a aprendizagem e facilitar a comunicação. Quando ocupam o tempo destinado ao estudo e ao descanso, podem prejudicar a concentração e a organização escolar.</p>
+      <div class="callout"><strong>Mensagem principal:</strong> o equilíbrio, a responsabilidade e o uso consciente da tecnologia ajudam a aproveitar os benefícios das redes sociais sem deixar os estudos para segundo plano.</div>
+      <h3>Referências bibliográficas</h3>
+      <p>As fontes abaixo foram consultadas para apoiar a informação sobre tecnologia, educação, competências digitais e segurança online:</p>
+      <ul class="list">
+        <li>UNESCO. (2023). <em>Global Education Monitoring Report 2023: Technology in education – A tool on whose terms?</em> Disponível em:
+          <a href="https://www.unesco.org/gem-report/en/publication/technology" target="_blank" rel="noopener noreferrer">UNESCO – Technology in education</a>.</li>
+        <li>UNICEF. (2022). <em>Pulse check on digital learning</em>. Disponível em:
+          <a href="https://www.unicef.org/reports/pulse-check-digital-learning" target="_blank" rel="noopener noreferrer">UNICEF – Pulse check on digital learning</a>.</li>
+        <li>UNICEF Office of Research – Innocenti. (2025). <em>Childhood in a Digital World: Screen time, digital skills and mental health</em>. Disponível em:
+          <a href="https://www.unicef.org/innocenti/reports/childhood-digital-world" target="_blank" rel="noopener noreferrer">UNICEF – Childhood in a Digital World</a>.</li>
+        <li>Manual de Tecnologias de Informação e Comunicação (TICs) da 10.ª classe, utilizado na escola.</li>
+      </ul>
+      <p><small>Nota: acrescenta entrevistas ou questionários apenas se o grupo realmente os realizar. Regista a data de consulta das páginas da Internet na versão final do trabalho.</small></p>
+      <button class="button" type="button" onclick="alert('Obrigado por visitar o nosso website! Usa as redes sociais com equilíbrio e responsabilidade.')">Agradecer a visita</button>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Website Educativo · Tema 15</strong></p>
+    <p>Influência das Redes Sociais no Desempenho Escolar</p>
+    <p>Feito para sensibilizar a comunidade escolar.</p>
+  </footer>
+  <a class="back-top" href="#topo" aria-label="Voltar ao início">↑</a>
+</body>
+</html>
